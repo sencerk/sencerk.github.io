@@ -172,6 +172,9 @@ html, body {
 }
 .note-warn { background: var(--bg-warning); color: var(--text-warning); }
 .note-info { background: var(--bg-info); color: var(--text-info); }
+.note-danger { background: var(--bg-danger); color: var(--text-danger); }
+.note-success { background: var(--bg-success); color: var(--text-success); }
+.note-box + .note-box { margin-top: 6px; }
 .breakdown { margin-top: 12px; }
 .breakdown summary {
   font-size: 12px; color: var(--text-info);
@@ -341,8 +344,9 @@ html, body {
       ferts: [
         { name: 'Fe-EDDHA %6', rate: 0.4, nutrients: 'Fe: 0.9 g/ağaç' }
       ],
-      note: 'Tek başına uygulanır. Diğer gübrelerle karıştırma.',
-      noteType: 'info'
+      notes: [
+        { type: 'info', text: 'Tek başına uygulanır. Diğer gübrelerle karıştırma.' }
+      ]
     },
     {
       id: 'bbch15',
@@ -355,8 +359,10 @@ html, body {
         { name: 'UP (12-61-0)', rate: 1.0, nutrients: 'P₂O₅: 22.6 · N: 4.4' },
         { name: 'Mg-nitrat (11+16MgO)', rate: 1.6, nutrients: 'MgO: 9.5 · N: 6.5' }
       ],
-      note: 'KNO₃ kullanma sebebi: sezon başı <15°C suda SOP çözünmüyor. Mg-nitrat\'ı AS ile karıştırma.',
-      noteType: 'warn',
+      notes: [
+        { type: 'warn', text: 'KNO₃ kullanma sebebi: sezon başı <15°C suda SOP çözünmüyor. Mg-nitrat\'ı AS ile karıştırma.' },
+        { type: 'info', text: 'AN kullanılıyorsa AN + KNO₃ + Mg-nitrat aynı tankta karıştırılabilinir.' }
+      ],
       target: 'N: 50 · P₂O₅: 23 · K₂O: 28'
     },
     {
@@ -366,8 +372,9 @@ html, body {
       ferts: [
         { name: 'ZnSO₄ yaprak', rate: 1.0, nutrients: 'Zn 1. uyg.' }
       ],
-      note: 'Yaprak uygulaması — fertigasyondan ayrı.',
-      noteType: 'info'
+      notes: [
+        { type: 'info', text: 'Yaprak uygulaması — fertigasyondan ayrı.' }
+      ]
     },
     {
       id: 'bbch65',
@@ -380,8 +387,9 @@ html, body {
         { name: 'Mg-nitrat (11+16MgO)', rate: 1.6, nutrients: 'MgO: 9.5 · N: 6.5' },
         { name: 'Solubor (%20.5 B)', rate: 0.066, nutrients: 'B: 0.5 · 1. uyg.' }
       ],
-      note: 'SOP + UP ayrı uygula. Mg-nitrat\'ı AS ile karıştırma.',
-      noteType: 'warn',
+      notes: [
+        { type: 'warn', text: 'SOP + UP ayrı uygula. Mg-nitrat\'ı AS ile karıştırma.' }
+      ],
       target: 'N: 50 · P₂O₅: 23 · K₂O: 30'
     },
     {
@@ -389,8 +397,9 @@ html, body {
       title: 'YAPRAK ANALİZİ',
       date: 'May 25–31',
       ferts: [],
-      note: 'Erken sezon: N/Zn/B durumu. B <20 ppm → Haziran B artır. B >100 → Haziran B atla. CG3/CG4 ayrı: Fe klorozu + B.',
-      noteType: 'info',
+      notes: [
+        { type: 'info', text: 'Erken sezon: N/Zn/B durumu. B <20 ppm → Haziran B artır. B >100 → Haziran B atla. CG3/CG4 ayrı: Fe klorozu + B.' }
+      ],
       isAnalysis: true
     },
     {
@@ -404,8 +413,9 @@ html, body {
         { name: 'Mg-nitrat (11+16MgO)', rate: 1.6, nutrients: 'MgO: 9.5 · N: 6.5' },
         { name: 'Solubor (%20.5 B)', rate: 0.066, nutrients: 'B: 0.5 · 2. uyg.' }
       ],
-      note: 'SOP + UP ayrı uygula. Mg-nitrat\'ı AS ile karıştırma.',
-      noteType: 'warn',
+      notes: [
+        { type: 'warn', text: 'SOP + UP ayrı uygula. Mg-nitrat\'ı AS ile karıştırma.' }
+      ],
       target: 'N: 50 · P₂O₅: 23 · K₂O: 30'
     },
     {
@@ -415,8 +425,9 @@ html, body {
       ferts: [
         { name: 'ZnSO₄ yaprak', rate: 1.0, nutrients: 'Zn 2. uyg.' }
       ],
-      note: 'Yaprak uygulaması — fertigasyondan ayrı.',
-      noteType: 'info'
+      notes: [
+        { type: 'info', text: 'Yaprak uygulaması — fertigasyondan ayrı.' }
+      ]
     },
     {
       id: 'bbch75',
@@ -428,8 +439,9 @@ html, body {
         { name: 'UP (12-61-0)', rate: 1.0, nutrients: 'P₂O₅: 22.6 · N: 4.4' },
         { name: 'Mg-nitrat (11+16MgO)', rate: 1.6, nutrients: 'MgO: 9.5 · N: 6.5' }
       ],
-      note: 'SOP + UP ayrı uygula. Mg-nitrat\'ı AS ile karıştırma.',
-      noteType: 'warn',
+      notes: [
+        { type: 'warn', text: 'SOP + UP ayrı uygula. Mg-nitrat\'ı AS ile karıştırma.' }
+      ],
       target: 'N: 50 · P₂O₅: 23 · K₂O: 30'
     },
     {
@@ -437,8 +449,9 @@ html, body {
       title: 'YAPRAK ANALİZİ',
       date: 'Tem 15–20',
       ferts: [],
-      note: 'Kanonik: N, P, K, Zn, Fe, B. Ağustos/Eylül dozları + Eylül B kararı.',
-      noteType: 'info',
+      notes: [
+        { type: 'info', text: 'Kanonik: N, P, K, Zn, Fe, B. Ağustos/Eylül dozları + Eylül B kararı.' }
+      ],
       isAnalysis: true
     },
     {
@@ -448,8 +461,9 @@ html, body {
       ferts: [
         { name: 'ZnSO₄ yaprak', rate: 1.0, nutrients: 'Zn 3. uyg.' }
       ],
-      note: 'Yaprak uygulaması — fertigasyondan ayrı.',
-      noteType: 'info'
+      notes: [
+        { type: 'info', text: 'Yaprak uygulaması — fertigasyondan ayrı.' }
+      ]
     },
     {
       id: 'bbch79',
@@ -460,8 +474,9 @@ html, body {
         { name: 'SOP (0-0-50)', rate: 1.6, nutrients: 'K₂O: 29.6' },
         { name: 'UP (12-61-0)', rate: 1.0, nutrients: 'P₂O₅: 22.6 · N: 4.4' }
       ],
-      note: 'Son N+P uygulaması. Mg-nitrat bu aşamadan sonra YOK.',
-      noteType: 'warn',
+      notes: [
+        { type: 'warn', text: 'Son N+P uygulaması. Mg-nitrat bu aşamadan sonra YOK.' }
+      ],
       target: 'N: 50 · P₂O₅: 23 · K₂O: 30'
     },
     {
@@ -472,8 +487,9 @@ html, body {
         { name: 'SOP (0-0-50)', rate: 1.6, nutrients: 'K₂O: 29.6' },
         { name: 'Solubor (%20.5 B)', rate: 0.066, nutrients: 'B: 0.5 · KOŞULLU: B<36 ppm' }
       ],
-      note: 'Solubor yalnızca Temmuz yaprak analizinde B<36 ppm ise. Aksi halde sadece SOP.',
-      noteType: 'warn',
+      notes: [
+        { type: 'warn', text: 'Solubor yalnızca Temmuz yaprak analizinde B<36 ppm ise. Aksi halde sadece SOP.' }
+      ],
       target: 'K₂O: 30'
     }
   ];
@@ -640,9 +656,14 @@ html, body {
         html += `</details>`;
       }
 
-      if (stage.note) {
-        const icon = stage.noteType === 'warn' ? ICONS.warn : ICONS.info;
-        html += `<div class="note-box note-${stage.noteType}">${icon}<span>${stage.note}</span></div>`;
+      if (stage.notes && stage.notes.length) {
+        stage.notes.forEach(n => {
+          const icon = n.type === 'danger' ? ICONS.danger
+                     : n.type === 'warn' ? ICONS.warn
+                     : n.type === 'success' ? ICONS.check
+                     : ICONS.info;
+          html += `<div class="note-box note-${n.type}">${icon}<span>${n.text}</span></div>`;
+        });
       }
 
       html += `</div></div>`;
