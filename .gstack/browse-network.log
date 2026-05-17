@@ -1,6 +1,2 @@
-[2026-05-17T08:55:49.222Z] GET file:///tmp/rules_test.html → 200 (4ms, 28943B)
-[2026-05-17T08:56:49.542Z] GET https://sencerk.github.io/ → pending (?ms, ?B)
-[2026-05-17T08:56:49.875Z] GET https://sencerk.github.io/assets/css/style.css?v=f510d983fb3e6d6e3c95796e81280cb6d0955843 → 200 (168ms, 76559B)
-[2026-05-17T08:56:49.875Z] GET https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js → 200 (37ms, 5389B)
-[2026-05-17T08:58:59.525Z] GET file:///tmp/rules_test.html → 200 (1ms, 28951B)
-[2026-05-17T09:22:26.039Z] GET file:///tmp/rules_test.html → 200 (30ms, 29680B)
+[2026-05-17T10:05:09.946Z] GET file:///tmp/rules_test.html → 200 (11ms, 42196B)
+[2026-05-17T10:36:56.066Z] GET file:///tmp/rules_test.html → 200 (30ms, 52236B)

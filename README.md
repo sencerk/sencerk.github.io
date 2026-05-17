@@ -270,6 +270,104 @@ html, body {
   pointer-events: none; z-index: 100;
 }
 .toast.show { opacity: 1; }
+.protokol-link {
+  display: block; width: 100%;
+  margin-top: 10px;
+  font-size: 12px; padding: 9px;
+  background: var(--bg-info); color: var(--text-info);
+  border: 0.5px solid var(--border-info);
+  border-radius: 8px; cursor: pointer;
+  font-family: inherit; font-weight: 500;
+  text-align: center;
+}
+.protokol-link:active { transform: scale(0.98); }
+.protokol-section-title {
+  font-size: 13px; font-weight: 500;
+  margin: 18px 4px 8px;
+  color: var(--text-secondary);
+}
+.protokol {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  scroll-margin-top: 12px;
+}
+.protokol h2 {
+  font-size: 14px; font-weight: 600;
+  margin: 0 0 4px; padding: 0;
+  border: 0; line-height: 1.3;
+}
+.protokol h3 {
+  font-size: 13px; font-weight: 600;
+  margin: 14px 0 6px; padding: 0;
+  border: 0; line-height: 1.3;
+}
+.protokol h4 {
+  font-size: 12px; font-weight: 600;
+  margin: 10px 0 4px; padding: 0;
+  border: 0; line-height: 1.3;
+}
+.protokol p { margin: 6px 0; }
+.protokol ul, .protokol ol { margin: 4px 0 8px; padding-left: 22px; }
+.protokol li { margin: 3px 0; }
+.protokol li::marker { color: var(--text-tertiary); }
+.protokol dl { margin: 6px 0; }
+.protokol dt { font-weight: 500; margin-top: 8px; }
+.protokol dd { margin: 2px 0 0 16px; color: var(--text-secondary); }
+.protokol table {
+  width: 100%; border-collapse: collapse;
+  margin: 8px 0; font-size: 11px;
+  display: block; overflow-x: auto;
+}
+.protokol th {
+  text-align: left; padding: 6px 8px;
+  background: var(--bg-secondary);
+  font-weight: 500;
+  border-bottom: 0.5px solid var(--border);
+  white-space: nowrap;
+}
+.protokol td {
+  padding: 6px 8px; vertical-align: top;
+  border-top: 0.5px solid var(--border);
+}
+.protokol .warning-box {
+  background: var(--bg-danger); color: var(--text-danger);
+  padding: 10px 12px; border-radius: 8px;
+  margin: 10px 0;
+}
+.protokol .warning-box h3 {
+  margin: 0 0 6px; color: inherit;
+  font-size: 13px;
+}
+.protokol .warning-box ul,
+.protokol .warning-box ol { margin: 4px 0; }
+.protokol .flag-box {
+  background: var(--bg-warning); color: var(--text-warning);
+  padding: 10px 12px; border-radius: 8px;
+  margin: 10px 0;
+  border-left: 3px solid var(--border-warning);
+}
+.protokol .flag-box h3 {
+  margin: 0 0 6px; color: inherit;
+  font-size: 13px;
+}
+.protokol .flag-box ul,
+.protokol .flag-box ol { margin: 4px 0; }
+.protokol .check-box {
+  background: var(--bg-info); color: var(--text-info);
+  padding: 10px 12px; border-radius: 8px;
+  margin: 10px 0;
+}
+.protokol .check-box h4 {
+  margin: 0 0 6px; color: inherit;
+}
+.protokol .check-box ul,
+.protokol .check-box ol { margin: 4px 0; }
+.protokol em { color: var(--text-secondary); font-style: italic; }
 .sr-only {
   position: absolute; width: 1px; height: 1px;
   padding: 0; margin: -1px; overflow: hidden;
@@ -291,7 +389,7 @@ html, body {
   <div class="tabs">
     <button class="tab active" data-tab="program">Program</button>
     <button class="tab" data-tab="blocks">Bloklar</button>
-    <button class="tab" data-tab="rules">Kurallar</button>
+    <button class="tab" data-tab="rules">Uygulama Kuralları</button>
   </div>
 
   <div class="summary" id="block-summary"></div>
@@ -360,10 +458,7 @@ html, body {
         { name: 'Mg-nitrat (11+16MgO)', rate: 1.6, nutrients: 'MgO: 9.5 · N: 6.5' }
       ],
       notes: [
-        { type: 'success', text: 'AN kullanılıyorsa AN + KNO₃ + Mg-nitrat aynı tankta karıştırılabilinir.' },
-        { type: 'info', text: 'Uygulama sırası: 1. AN + KNO₃ + Mg-nitrat, 2. SOP, 3. UP'},
-        { type: 'danger', text: 'AS kullanılıyorsa AS ve Mg-nitrat aynı tankta KARIŞTIRMA!' },
-        { type: 'info', text: 'KNO₃ kullanma sebebi: sezon başı <15°C suda SOP çözünmüyor. Mg-nitrat\'ı AS ile karıştırma.' }
+        { type: 'info', text: 'KNO₃ kullanma sebebi: sezon başı <15°C suda SOP çözünmüyor. '}
       ],
       target: 'N: 50 · P₂O₅: 23 · K₂O: 28'
     },
@@ -497,15 +592,363 @@ html, body {
   ];
 
   const mixingRules = [
-    { type: 'danger', text: 'Mg-nitrat + AS — KARIŞTIRMA. Operasyonu bozuyorsa Mg-nitrat\'ı sezona düşür (Şubat\'ta toprağa veya yaprak).' },
-    { type: 'danger', text: 'SOP + UP — Ayrı uygula.' },
-    { type: 'warn', text: 'AN + KNO₃ + Mg-nitrat — Karıştırılabilir (BBCH 15).' },
-    { type: 'warn', text: 'AS + UP — Karıştırılabilir, asidik pH faydalı.' },
     { type: 'warn', text: 'CG7 + CG8 — Genç ağaçlar, %70 doz uygulanır. Tüm kg değerleri otomatik düzeltilmiştir.' },
     { type: 'info', text: 'Uygulama sırası: 15 dk temiz sulama → asitleme (pH 6.5) → gübre → durdur → 30 dk temiz su.' },
     { type: 'info', text: 'BBCH 15 KNO₃ sebebi: sezon başı <15°C suda SOP çözünmüyor. Daha sonra SOP\'a geç.' },
     { type: 'success', text: 'AS, AN\'a kıyasla daha ucuz (per N) + S sağlıyor + yüksek pH topraklarda asidik etki.' }
   ];
+
+  // Per-stage application protocols. Keys match stage.id.
+  // Add a stage's protocol here and a "Uygulama protokolü" link appears on that
+  // stage in the Program tab; clicking jumps to it in the Uygulama Kuralları tab.
+  const protocols = {
+    'bbch15': {
+      label: 'BBCH 15 — Tek Tank Protokolü (Sürgün)',
+      html: `
+        <h2>BBCH 15 Fertigasyon Protokolü — Tek Tank Yöntemi</h2>
+        <p><strong>Aşama:</strong> Sürgün (Nisan 25–30) &nbsp;|&nbsp; <strong>Tank:</strong> 1000 L</p>
+        <p><strong>Ürünler:</strong> UP + SOP + AN + KNO₃ + Mg-nitrat (5 ürün)</p>
+
+        <div class="flag-box">
+          <h3>⚠ BBCH 65'TEN FARKLAR</h3>
+          <ol>
+            <li><strong>AS yerine AN kullanılıyor.</strong> AN daha hızlı çözünür, daha az soğutucu etkisi var.</li>
+            <li><strong>KNO₃ ekleniyor (BBCH 65'te yoktu).</strong> AN'den sonra, Mg-nitrattan önce ekleniyor.</li>
+            <li><strong>5 ürün var, 4 değil.</strong> Sıralama disiplini daha kritik.</li>
+            <li><strong>İki nitrat kaynağı var</strong> (AN + KNO₃). pH biraz daha yüksek olma eğiliminde — gerekirse UP miktarını artırın.</li>
+          </ol>
+        </div>
+
+        <div class="warning-box">
+          <h3>⛔ DUR</h3>
+          <p>Tankta şunlardan herhangi biri görülürse karışımı damla sulamaya <strong>VERME</strong>:</p>
+          <ul>
+            <li>Bulanıklık (su berrak değil)</li>
+            <li>Tank dibinde kristal veya tortu</li>
+            <li>Beyaz çökelti veya süt görünümü</li>
+            <li>Jelimsi / yapışkan yapı</li>
+            <li>Yüzeyde yağ benzeri film</li>
+          </ul>
+        </div>
+
+        <h3>Ön Hazırlık</h3>
+        <ol>
+          <li>5 ürünün miktarlarını tartın, ayrı kovalara koyun</li>
+          <li>Sulama hattının temiz olduğunu kontrol edin; önceki fertigasyondan kalıntı varsa 10 dk temiz su geçirin</li>
+          <li>Ana filtre ve emme filtresini kontrol edin (tıkanma olmamalı)</li>
+          <li>Agitasyon pompasını kontrol edin — bu protokol agitasyon olmadan uygulanamaz</li>
+          <li>pH ölçer hazır ve kalibre olmalı</li>
+          <li><strong>AN'ın kuru ve topaksız olduğunu kontrol edin</strong> — nemlenmiş AN doğru doz uygulanamaz</li>
+        </ol>
+
+        <h3>Tank Hazırlığı — Sıra Önemlidir</h3>
+
+        <h4>Adım 1: Tankı yarıya kadar doldurun</h4>
+        <ul>
+          <li>Tanka 600 L temiz su alın</li>
+          <li>Agitasyon pompasını çalıştırın ve karıştırma boyunca açık tutun</li>
+        </ul>
+
+        <h4>Adım 2: ÜRE FOSFAT (UP) — İLK</h4>
+        <ul>
+          <li>UP'yi yavaşça suya dökün</li>
+          <li>UP suyu hemen asitleştirir (pH ~3'e iner)</li>
+          <li>2–3 dakikada tamamen çözünür; su berraklaşana kadar bekleyin</li>
+        </ul>
+
+        <h4>Adım 3: SOP (Potasyum Sülfat) — İKİNCİ, YAVAŞ</h4>
+        <ul>
+          <li><strong>SOP miktarı 1000 L tankta 60 kg'ı geçmemeli.</strong> Daha fazla gerekiyorsa iki ayrı tank dolumu yapın</li>
+          <li>SOP'yi 10–15 kg'lık küçük partiler halinde ekleyin</li>
+          <li>Her parti tamamen çözünmeden bir sonraki partiyi eklemeyin</li>
+          <li>Çözünme yavaştır (5–10 dakika sürebilir) — sabırlı olun</li>
+          <li><strong>Görsel kontrol:</strong> Tank dibinde kristal kalmamalı. El feneri ile dipten kontrol edin</li>
+          <li>SOP tamamen çözünmeden bir sonraki ürüne KESİNLİKLE geçmeyin</li>
+        </ul>
+
+        <h4>Adım 4: AMONYUM NİTRAT (AN) — ÜÇÜNCÜ</h4>
+        <ul>
+          <li>SOP tam çözündükten sonra AN'yi yavaşça ekleyin</li>
+          <li>Hızla çözünür (1–2 dakika)</li>
+          <li>Su biraz soğuyacak (~2–3°C) — normaldir</li>
+          <li><strong>AN higroskopiktir</strong> — torba açıldıktan sonra hemen kullan, açık bırakma</li>
+        </ul>
+
+        <h4>Adım 5: KNO₃ (Potasyum Nitrat) — DÖRDÜNCÜ</h4>
+        <ul>
+          <li>AN tam çözündükten sonra KNO₃'i ekleyin</li>
+          <li>Orta hızda çözünür (2–3 dakika)</li>
+          <li>Hafif endotermik — su biraz daha soğuyabilir</li>
+          <li>Görsel kontrol: dipte kristal kalmamalı</li>
+        </ul>
+
+        <h4>Adım 6: pH KONTROLÜ — Mg-nitrattan ÖNCE</h4>
+        <div class="check-box">
+          <p><strong>Mg-nitrat eklemeden önce pH ölç:</strong></p>
+          <ul>
+            <li><strong>Hedef aralık: pH 2.5 – 4.0</strong></li>
+            <li>pH 4.0'ın üstündeyse: UP yeterince çözünmemiş veya nitratlar pH'ı yükseltmiş. 5 dk daha karıştır, tekrar ölç. Yine yüksekse 0.5 kg ek UP ekle</li>
+            <li>pH 2.5'in altındaysa: Çok asidik. 50 L temiz su ekle, karıştır, tekrar ölç</li>
+            <li><strong>Hedef aralık tutturulmadan Mg-nitrat EKLEME</strong></li>
+          </ul>
+          <p><em>Not: BBCH 15'te 2 nitrat kaynağı var (AN + KNO₃), bu nedenle pH BBCH 65'e göre biraz daha yüksek olma eğiliminde.</em></p>
+        </div>
+
+        <h4>Adım 7: MAGNEZYUM NİTRAT — SON</h4>
+        <ul>
+          <li>En kolay çözünen üründür, 1 dakikada çözünür</li>
+          <li>Hızlıca ekleyin ve karıştırın</li>
+        </ul>
+
+        <h4>Adım 8: Tankı 1000 L'ye tamamlayın</h4>
+        <ul>
+          <li>Üzerine temiz su ekleyerek nihai hacme ulaşın</li>
+          <li>2–3 dakika daha karıştırın</li>
+          <li><strong>Son kontrol:</strong> Tank berrak, dipte kristal yok, yüzeyde köpük/bulanıklık yok</li>
+        </ul>
+
+        <h3>Enjeksiyon Zamanlaması</h3>
+        <table>
+          <thead>
+            <tr><th>Aşama</th><th>Toplam Döngünün %'si</th><th>İşlem</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>İlk %20</td><td>Sadece temiz su — ıslak bölgeyi oluştur</td></tr>
+            <tr><td>2</td><td>Orta %60</td><td>Gübre enjeksiyonu — tankı bu aralıkta boşalt</td></tr>
+            <tr><td>3</td><td>Son %20</td><td>Sadece temiz su — hatları yıka, gübreyi kök bölgesine it</td></tr>
+          </tbody>
+        </table>
+
+        <div class="check-box">
+          <h4>Yıkama Kuralı (Atlanamaz)</h4>
+          <ul>
+            <li>Tank tamamen boşaldıktan sonra hattı <strong>en az 25 dakika</strong> temiz su ile çalıştır</li>
+            <li>Bu sürede gübre enjeksiyonu KAPALI olmalı</li>
+            <li>Amaç: hattaki gübre kalıntısını kök bölgesine itmek + damlatıcıları temizlemek</li>
+            <li>Yıkama atlanırsa: damlatıcı tıkanması, lokal tuz birikmesi, sonraki uygulamada çapraz reaksiyon riski</li>
+          </ul>
+        </div>
+
+        <h3>Enjeksiyon Sırasında Kontroller</h3>
+        <ul>
+          <li>Damlatıcıdan çıkan su pH'ı: <strong>5.5 – 6.5 arası olmalı</strong></li>
+          <li>pH 5.0 altına düşerse: enjeksiyon hızını azalt</li>
+          <li>pH 7.0 üstünde kalırsa: bir sonraki uygulamada UP miktarını artır</li>
+        </ul>
+
+        <h3>Yapılmaması Gerekenler</h3>
+        <ul>
+          <li>❌ SOP'yi UP'den önce ekleme</li>
+          <li>❌ AN'yi SOP tam çözünmeden ekleme</li>
+          <li>❌ KNO₃'i AN tam çözünmeden ekleme</li>
+          <li>❌ Mg-nitratı pH kontrolü yapmadan ekleme</li>
+          <li>❌ 60 kg/1000L üzerinde SOP yükleme</li>
+          <li>❌ Kalsiyum nitrat veya kalsiyum klorür bu tanka koyma (jips çöker)</li>
+          <li>❌ Demir-EDDHA'yı bu tankla aynı uygulamada verme (ayrı damlama olayı)</li>
+          <li>❌ Topaklanmış / nemlenmiş AN kullanma</li>
+          <li>❌ Açılmış AN torbasını uzun süre bırakma — higroskopiktir, hemen kullan</li>
+          <li>❌ Tankı bir gece bekletme — aynı gün hazırla, aynı gün uygula</li>
+        </ul>
+
+        <h3>Sorun Giderme</h3>
+        <dl>
+          <dt>SOP çözünmüyor, dipte kristal kalıyor</dt>
+          <dd>Agitasyonu artır, daha küçük partilerle ekle, sabırlı ol. Çözünmemiş SOP enjekte etme — filtreyi tıkar.</dd>
+
+          <dt>AN çözünmeden topak halinde kalıyor</dt>
+          <dd>Topaklanmış AN demektir — kullanma. Yeni torba aç. Topaklı AN doğru doz vermez.</dd>
+
+          <dt>Mg-nitrat öncesi pH 4.0 üstünde kalıyor</dt>
+          <dd>2 nitrat kaynağı pH'ı yükseltmiş. 0.5 kg ek UP ekle, 5 dk karıştır, tekrar ölç.</dd>
+
+          <dt>Tank bulanıklaşıyor / çökelti oluşuyor</dt>
+          <dd>DUR. Enjeksiyon yapma.</dd>
+
+          <dt>Damlatıcılarda tıkanma şüphesi</dt>
+          <dd>Birkaç damlatıcının debisini ölç. Belirgin düşüş varsa hat sonu yıkaması yap.</dd>
+
+          <dt>pH çok düşük (5.0 altı, damlatıcıda)</dt>
+          <dd>Bir sonraki uygulamada UP miktarını %20 azalt. Enjeksiyon hızını yavaşlat.</dd>
+        </dl>
+
+        <h3>Bölek Testi (Sezonun İlk Uygulamasından 24 Saat Önce)</h3>
+        <p>BBCH 15 ilk uygulaması için 1000 L tank için planlanan miktarların <strong>1/200'ünü</strong> 5 L şeffaf kovada karıştır. Sıralama aynı (UP → SOP → AN → KNO₃ → pH kontrol → Mg-nitrat). 30 dk bekle. Berrak kalırsa tam ölçeğe geç. Bulanıklık/çökelti olursa Sencer'i ara.</p>
+        <p><em>Çeviri:</em> 1000 L'deki kg miktarını 200'e böl → kovaya gram olarak ekle. Örnek: 1000L'de 50 kg SOP → 250 g kovaya.</p>
+
+        <h3>Kayıt Tutma</h3>
+        <p>Her uygulama için Burak şunları kaydetsin (WhatsApp ile Sencer'e gönderilsin):</p>
+        <ol>
+          <li>Tarih ve saat</li>
+          <li>Hangi parsel</li>
+          <li>Su kaynağı sıcaklığı (tank doldurma anında)</li>
+          <li>5 ürünün gerçek kullanılan kg miktarı</li>
+          <li>Mg-nitrat öncesi ölçülen tank pH'ı</li>
+          <li>Tank hazırlık süresi</li>
+          <li>Enjeksiyon başlangıç ve bitiş saati</li>
+          <li>Enjeksiyon sırasında damlatıcıda ölçülen pH</li>
+          <li>Gözlem notları (çözünme, filtreleme, vb.)</li>
+        </ol>
+      `
+    },
+    'bbch65': {
+      label: 'BBCH 65 — Tek Tank Protokolü (CG3, CG4)',
+      html: `
+        <h2>BBCH 65 Fertigasyon Protokolü — Tek Tank Yöntemi</h2>
+        <p><strong>Parseller:</strong> CG3, CG4 (yüksek kireçli topraklar)</p>
+        <p><strong>Tank:</strong> 1000 L &nbsp;|&nbsp; <strong>Ürünler:</strong> UP + SOP + AS + Mg-nitrat</p>
+
+        <div class="warning-box">
+          <h3>⛔ DUR</h3>
+          <p>Tankta şunlardan herhangi biri görülürse karışımı damla sulamaya <strong>VERME</strong>:</p>
+          <ul>
+            <li>Bulanıklık (su berrak değil)</li>
+            <li>Tank dibinde kristal veya tortu</li>
+            <li>Beyaz çökelti veya süt görünümü</li>
+            <li>Jelimsi / yapışkan yapı</li>
+            <li>Yüzeyde yağ benzeri film</li>
+          </ul>
+        </div>
+
+        <h3>Ön Hazırlık</h3>
+        <ol>
+          <li>Ürün miktarlarını tartın, ayrı kovalara koyun</li>
+          <li>Sulama hattının temiz olduğunu kontrol edin; önceki fertigasyondan kalıntı varsa 10 dk temiz su geçirin</li>
+          <li>Ana filtre ve emme filtresini kontrol edin (tıkanma olmamalı)</li>
+          <li>Agitasyon pompasını kontrol edin — bu protokol agitasyon olmadan uygulanamaz</li>
+          <li>pH ölçer hazır ve kalibre olmalı</li>
+        </ol>
+
+        <h3>Tank Hazırlığı — Sıra Önemlidir</h3>
+
+        <h4>Adım 1: Tankı 60% kadar doldurun</h4>
+        <ul>
+          <li>Tanka 600 L temiz su alın</li>
+          <li>Agitasyon pompasını çalıştırın ve karıştırma boyunca açık tutun</li>
+        </ul>
+
+        <h4>Adım 2: ÜRE FOSFAT (UP) — İLK</h4>
+        <ul>
+          <li>UP'yi yavaşça suya dökün</li>
+          <li>UP suyu hemen asitleştirir (pH ~3'e iner)</li>
+          <li>2–3 dakikada tamamen çözünür; su berraklaşana kadar bekleyin</li>
+        </ul>
+
+        <h4>Adım 3: SOP (Potasyum Sülfat) — İKİNCİ, YAVAŞ</h4>
+        <ul>
+          <li><strong>SOP miktarı 1000 L tankta 60 kg'ı geçmemeli.</strong> Daha fazla gerekiyorsa iki ayrı tank dolumu yapın (split fertigasyon)</li>
+          <li>SOP'yi 10–15 kg'lık küçük partiler halinde ekleyin</li>
+          <li>Her parti tamamen çözünmeden bir sonraki partiyi eklemeyin</li>
+          <li>Çözünme yavaştır (5–10 dakika sürebilir) — sabırlı olun</li>
+          <li><strong>Görsel kontrol:</strong> Tank dibinde kristal kalmamalı. El feneri ile dipten kontrol edin</li>
+          <li>SOP tamamen çözünmeden bir sonraki ürüne KESİNLİKLE geçmeyin</li>
+        </ul>
+
+        <h4>Adım 4: AMONYUM SÜLFAT (AS) — ÜÇÜNCÜ</h4>
+        <ul>
+          <li>SOP tam çözündükten sonra AS'yi yavaşça ekleyin</li>
+          <li>Hızla çözünür (1–2 dakika)</li>
+          <li>Su soğuyacak (~3–5°C) — normaldir</li>
+        </ul>
+
+        <h4>Adım 5: pH KONTROLÜ — Mg-nitrattan ÖNCE</h4>
+        <div class="check-box">
+          <p><strong>Mg-nitrat eklemeden önce pH ölç:</strong></p>
+          <ul>
+            <li><strong>Hedef aralık: pH 2.5 – 4.0</strong></li>
+            <li>pH 4.0'ın üstündeyse: UP yeterince çözünmemiş. 5 dk daha karıştır, tekrar ölç</li>
+            <li>pH 2.5'in altındaysa: Çok asidik. 50 L temiz su ekle, karıştır, tekrar ölç</li>
+            <li><strong>Hedef aralık tutturulmadan Mg-nitrat EKLEME</strong></li>
+          </ul>
+        </div>
+
+        <h4>Adım 6: MAGNEZYUM NİTRAT — SON</h4>
+        <ul>
+          <li>En kolay çözünen üründür, 1 dakikada çözünür</li>
+          <li>Hızlıca ekleyin ve karıştırın</li>
+        </ul>
+
+        <h4>Adım 7: Tankı 1000 L'ye tamamlayın</h4>
+        <ul>
+          <li>Üzerine temiz su ekleyerek nihai hacme ulaşın</li>
+          <li>2–3 dakika daha karıştırın</li>
+          <li><strong>Son kontrol:</strong> Tank berrak, dipte kristal yok, yüzeyde köpük/bulanıklık yok</li>
+        </ul>
+
+        <h3>Enjeksiyon Zamanlaması</h3>
+        <table>
+          <thead>
+            <tr><th>Aşama</th><th>Toplam Döngünün %'si</th><th>İşlem</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>İlk %20</td><td>Sadece temiz su — ıslak bölgeyi oluştur</td></tr>
+            <tr><td>2</td><td>Orta %60</td><td>Gübre enjeksiyonu — tankı bu aralıkta boşalt</td></tr>
+            <tr><td>3</td><td>Son %20</td><td>Sadece temiz su — hatları yıka, gübreyi kök bölgesine it</td></tr>
+          </tbody>
+        </table>
+        <p><em>Örnek 5 saatlik döngü:</em> 0:00–1:00 temiz su → 1:00–4:00 enjeksiyon → 4:00–5:00 temiz su</p>
+
+        <div class="check-box">
+          <h4>Yıkama Kuralı (Atlanamaz)</h4>
+          <ul>
+            <li>Tank tamamen boşaldıktan sonra hattı <strong>en az 25 dakika</strong> temiz su ile çalıştır</li>
+            <li>Bu sürede gübre enjeksiyonu KAPALI olmalı</li>
+            <li>Amaç: hattaki gübre kalıntısını kök bölgesine itmek + damlatıcıları temizlemek</li>
+            <li>Yıkama atlanırsa: damlatıcı tıkanması, lokal tuz birikmesi, sonraki uygulamada çapraz reaksiyon riski</li>
+          </ul>
+        </div>
+
+        <h3>Enjeksiyon Sırasında Kontroller</h3>
+        <ul>
+          <li>Damlatıcıdan çıkan su pH'ı: <strong>5.5 – 6.5 arası olmalı</strong></li>
+          <li>pH 5.0 altına düşerse: enjeksiyon hızını azalt</li>
+          <li>pH 7.0 üstünde kalırsa: bir sonraki uygulamada UP miktarını artır</li>
+        </ul>
+
+        <h3>Yapılmaması Gerekenler</h3>
+        <ul>
+          <li>❌ SOP'yi UP'den önce ekleme</li>
+          <li>❌ AS'yi SOP tam çözünmeden ekleme (common ion effect SOP çözünmesini durdurur)</li>
+          <li>❌ Mg-nitratı pH kontrolü yapmadan ekleme</li>
+          <li>❌ 60 kg/1000L üzerinde SOP yükleme</li>
+          <li>❌ Kalsiyum nitrat veya kalsiyum klorür bu tanka koyma (jips çöker)</li>
+          <li>❌ Demir-EDDHA'yı bu tankla aynı uygulamada verme (ayrı damlama olayı)</li>
+          <li>❌ MAP kullanma (yüksek kireçli toprakta CaCO₃ çökme riski)</li>
+          <li>❌ Tankı bir gece bekletme — aynı gün hazırla, aynı gün uygula</li>
+        </ul>
+
+        <h3>Sorun Giderme</h3>
+        <dl>
+          <dt>SOP çözünmüyor, dipte kristal kalıyor</dt>
+          <dd>Agitasyonu artır, daha küçük partilerle ekle, sabırlı ol. Çözünmemiş SOP enjekte etme — filtreyi tıkar.</dd>
+
+          <dt>Tank bulanıklaşıyor / çökelti oluşuyor</dt>
+          <dd>DUR. Enjeksiyon yapma. Yukarıdaki DUR-İŞARETİ KURALI'nı uygula.</dd>
+
+          <dt>Damlatıcılarda tıkanma şüphesi</dt>
+          <dd>Birkaç damlatıcının debisini ölç. Belirgin düşüş varsa hat sonu yıkaması yap.</dd>
+
+          <dt>pH çok düşük (5.0 altı, damlatıcıda)</dt>
+          <dd>Bir sonraki uygulamada UP miktarını %20 azalt. Enjeksiyon hızını yavaşlat.</dd>
+        </dl>
+
+        <h3>Bölek Testi (Sezonun İlk Uygulamasından 24 Saat Önce)</h3>
+        <p>1000 L tank için planlanan miktarların <strong>1/200'ünü</strong> 5 L şeffaf kovada karıştır. Sıralama aynı (UP → SOP → AS → pH kontrol → Mg-nitrat). 30 dk bekle. Berrak kalırsa tam ölçeğe geç.
+        <p>1000 L'deki kg miktarını 200'e böl → kovaya gram olarak ekle. Örnek: 50 kg SOP → 250 g</p>
+
+        <h3>Kayıt Tutma</h3>
+      <p>Her uygulama için </p>
+        <ol>
+          <li>Tarih ve saat</li>
+          <li>Hangi parsel</li>
+          <li>Her ürünün gerçek kullanılan miktarı (kg)</li>
+          <li>Tank hazırlık süresi</li>
+          <li>Enjeksiyon başlangıç ve bitiş saati</li>
+          <li>Enjeksiyon sırasında damlatıcıda ölçülen pH</li>
+          <li>Gözlem notları (çözünme, filtreleme, vb.)</li>
+        </ol>
+      `
+    }
+  };
 
   function loadState() {
     try {
@@ -668,6 +1111,10 @@ html, body {
         });
       }
 
+      if (protocols[stage.id]) {
+        html += `<button class="protokol-link" data-protocol="${stage.id}">📋 Uygulama protokolü →</button>`;
+      }
+
       html += `</div></div>`;
     });
 
@@ -706,6 +1153,21 @@ html, body {
         if (stage) copyText(buildCopyText(stage));
       });
     });
+    root.querySelectorAll('[data-protocol]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        goToProtocol(el.getAttribute('data-protocol'));
+      });
+    });
+  }
+
+  function goToProtocol(stageId) {
+    switchTab('rules');
+    requestAnimationFrame(() => {
+      const target = document.getElementById('protokol-' + stageId);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   }
 
   function renderBlocks() {
@@ -734,7 +1196,7 @@ html, body {
 
   function renderRules() {
     const root = document.getElementById('tab-rules');
-    let html = '<div class="summary">Karıştırma ve uygulama kuralları. Dökmeden önce kontrol et.</div>';
+    let html = '<div class="summary">Karıştırma kuralları, genel uygulama sırası ve aşamaya özel detaylı protokoller.</div>';
     mixingRules.forEach(r => {
       const icon = r.type === 'danger' ? ICONS.danger
                  : r.type === 'warn' ? ICONS.warn
@@ -744,7 +1206,7 @@ html, body {
     });
 
     html += `<div class="sequence">`;
-    html += `<div class="sequence-title">Uygulama sırası</div>`;
+    html += `<div class="sequence-title">Genel uygulama sırası</div>`;
     const steps = [
       '15 dk temiz sulama',
       'Asitleme başla — pH 6.5',
@@ -756,6 +1218,14 @@ html, body {
       html += `<div class="seq-step"><span class="seq-num">${i + 1}</span><span>${s}</span></div>`;
     });
     html += `</div>`;
+
+    const protocolIds = Object.keys(protocols);
+    if (protocolIds.length) {
+      html += `<div class="protokol-section-title">Aşamaya özel protokoller</div>`;
+      protocolIds.forEach(id => {
+        html += `<div id="protokol-${id}" class="protokol">${protocols[id].html}</div>`;
+      });
+    }
 
     root.innerHTML = html;
   }
