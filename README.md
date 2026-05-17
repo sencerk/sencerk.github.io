@@ -166,7 +166,8 @@ html, body {
   line-height: 1.45;
   display: flex; gap: 6px; align-items: flex-start;
 }
-.note-box svg { flex-shrink: 0; margin-top: 1px; }
+.note-box svg { flex-shrink: 0; margin-top: 2px; }
+.note-box span { flex: 1; min-width: 0; word-wrap: break-word; }
 .note-warn { background: var(--bg-warning); color: var(--text-warning); }
 .note-info { background: var(--bg-info); color: var(--text-info); }
 .breakdown { margin-top: 12px; }
@@ -228,7 +229,8 @@ html, body {
   margin-bottom: 8px; font-size: 12px; line-height: 1.5;
   display: flex; gap: 8px; align-items: flex-start;
 }
-.rule svg { flex-shrink: 0; margin-top: 1px; }
+.rule svg { flex-shrink: 0; margin-top: 2px; }
+.rule span { flex: 1; min-width: 0; word-wrap: break-word; }
 .rule-danger { background: var(--bg-danger); color: var(--text-danger); }
 .rule-warn { background: var(--bg-warning); color: var(--text-warning); }
 .rule-info { background: var(--bg-info); color: var(--text-info); }
