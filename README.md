@@ -360,8 +360,10 @@ html, body {
         { name: 'Mg-nitrat (11+16MgO)', rate: 1.6, nutrients: 'MgO: 9.5 · N: 6.5' }
       ],
       notes: [
-        { type: 'warn', text: 'KNO₃ kullanma sebebi: sezon başı <15°C suda SOP çözünmüyor. Mg-nitrat\'ı AS ile karıştırma.' },
-        { type: 'info', text: 'AN kullanılıyorsa AN + KNO₃ + Mg-nitrat aynı tankta karıştırılabilinir.' }
+        { type: 'success', text: 'AN kullanılıyorsa AN + KNO₃ + Mg-nitrat aynı tankta karıştırılabilinir.' },
+        { type: 'info', text: 'Uygulama sırası: 1. AN + KNO₃ + Mg-nitrat, 2. SOP, 3. UP'},
+        { type: 'danger', text: 'AS kullanılıyorsa AS ve Mg-nitrat aynı tankta KARIŞTIRMA!' },
+        { type: 'info', text: 'KNO₃ kullanma sebebi: sezon başı <15°C suda SOP çözünmüyor. Mg-nitrat\'ı AS ile karıştırma.' }
       ],
       target: 'N: 50 · P₂O₅: 23 · K₂O: 28'
     },
