@@ -1,0 +1,28 @@
+{"ts":"2026-05-17T08:55:49.191Z","cmd":"viewport","args":"1280x800","origin":"about:blank","durationMs":4,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:55:49.246Z","cmd":"goto","args":"file:///tmp/rules_test.html","origin":"file:///tmp/rules_test.html","durationMs":28,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:55:49.310Z","cmd":"snapshot","args":"-i","origin":"file:///tmp/rules_test.html","durationMs":33,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:55:52.575Z","cmd":"click","args":"@e4","origin":"file:///tmp/rules_test.html","durationMs":50,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:55:52.650Z","cmd":"screenshot","args":"/tmp/rules_desktop.png","origin":"file:///tmp/rules_test.html","durationMs":47,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:55:52.676Z","cmd":"viewport","args":"375x812","origin":"file:///tmp/rules_test.html","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:55:52.738Z","cmd":"screenshot","args":"/tmp/rules_mobile.png","origin":"file:///tmp/rules_test.html","durationMs":38,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:56:26.790Z","cmd":"viewport","args":"375x812","origin":"file:///tmp/rules_test.html","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:56:26.821Z","cmd":"js","args":"Array.from(document.querySelectorAll('.rule')).map(r => { const cs = getComputedStyle(r); const rect = r.getBoundingClientRect(); return {text: r.textContent.slice(0,40), height: rect.height, width: r…","origin":"file:///tmp/rules_test.html","durationMs":3,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:56:49.490Z","cmd":"viewport","args":"375x812","origin":"file:///tmp/rules_test.html","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:56:50.068Z","cmd":"goto","args":"https://sencerk.github.io/","origin":"https://sencerk.github.io/","durationMs":551,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:56:50.103Z","cmd":"url","args":"","origin":"https://sencerk.github.io/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:56:50.192Z","cmd":"screenshot","args":"/tmp/live_initial.png","origin":"https://sencerk.github.io/","durationMs":61,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:57:01.372Z","cmd":"snapshot","args":"-i","origin":"https://sencerk.github.io/","durationMs":12,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:57:06.068Z","cmd":"click","args":"@e5","origin":"https://sencerk.github.io/","durationMs":35,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:57:06.155Z","cmd":"screenshot","args":"/tmp/live_rules_mobile.png","origin":"https://sencerk.github.io/","durationMs":59,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:57:06.182Z","cmd":"viewport","args":"1280x800","origin":"https://sencerk.github.io/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:57:06.244Z","cmd":"screenshot","args":"/tmp/live_rules_desktop.png","origin":"https://sencerk.github.io/","durationMs":38,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:57:23.718Z","cmd":"viewport","args":"375x812","origin":"https://sencerk.github.io/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:57:23.747Z","cmd":"js","args":"(() => { const rules = document.querySelectorAll('.rule'); const r0 = rules[0]; const cs = getComputedStyle(r0); const rect = r0.getBoundingClientRect(); return JSON.stringify({count: rules.length, he…","origin":"https://sencerk.github.io/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:57:30.610Z","cmd":"inspect","args":".rule","origin":"https://sencerk.github.io/","durationMs":23,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:58:03.206Z","cmd":"js","args":"(() => { const sels = ['.app','.header','.title','.subtitle','.btn','.tabs','.tab','.summary','.stage','.check','.chev','.fert-row','.note-box','.breakdown','.block-row','.sequence','.toast','.rule','…","origin":"https://sencerk.github.io/","durationMs":8,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:58:59.491Z","cmd":"viewport","args":"375x812","origin":"https://sencerk.github.io/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:58:59.570Z","cmd":"goto","args":"file:///tmp/rules_test.html","origin":"file:///tmp/rules_test.html","durationMs":49,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:58:59.619Z","cmd":"snapshot","args":"-i","origin":"file:///tmp/rules_test.html","durationMs":19,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:59:04.036Z","cmd":"click","args":"@e4","origin":"file:///tmp/rules_test.html","durationMs":37,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:59:04.064Z","cmd":"js","args":"Array.from(document.querySelectorAll('.kural')).map(r => ({h: r.getBoundingClientRect().height, txt: r.textContent.slice(0,40)}))","origin":"file:///tmp/rules_test.html","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-17T08:59:09.156Z","cmd":"screenshot","args":"/tmp/rules_after_fix_mobile.png","origin":"file:///tmp/rules_test.html","durationMs":45,"status":"ok","hasCookies":false,"mode":"launched"}

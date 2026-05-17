@@ -226,19 +226,19 @@ html, body {
   font-variant-numeric: tabular-nums;
   min-width: 44px; text-align: right;
 }
-.rule {
+.kural {
   padding: 10px 12px; border-radius: 8px;
   margin-bottom: 8px; font-size: 12px; line-height: 1.5;
 }
-.rule svg {
+.kural svg {
   width: 13px; height: 13px;
   vertical-align: -2px;
   margin-right: 8px;
 }
-.rule-danger { background: var(--bg-danger); color: var(--text-danger); }
-.rule-warn { background: var(--bg-warning); color: var(--text-warning); }
-.rule-info { background: var(--bg-info); color: var(--text-info); }
-.rule-success { background: var(--bg-success); color: var(--text-success); }
+.kural-danger { background: var(--bg-danger); color: var(--text-danger); }
+.kural-warn { background: var(--bg-warning); color: var(--text-warning); }
+.kural-info { background: var(--bg-info); color: var(--text-info); }
+.kural-success { background: var(--bg-success); color: var(--text-success); }
 .sequence {
   margin-top: 16px; padding: 12px 14px;
   background: var(--bg-card);
@@ -717,7 +717,7 @@ html, body {
                  : r.type === 'warn' ? ICONS.warn
                  : r.type === 'success' ? ICONS.check
                  : ICONS.info;
-      html += `<div class="rule rule-${r.type}">${icon}<span>${r.text}</span></div>`;
+      html += `<div class="kural kural-${r.type}">${icon}<span>${r.text}</span></div>`;
     });
 
     html += `<div class="sequence">`;
